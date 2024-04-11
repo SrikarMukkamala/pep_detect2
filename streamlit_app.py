@@ -76,11 +76,11 @@ def main():
                 results = model(source=img, stream=True, persist=True, classes=[0,2,3])
                 for res in results:
                     res_plotted = res.plot()
-                cv2.imwrite('images/test_image_output.jpg', res_plotted)
+                #cv2.imwrite('images/test_image_output.jpg', res_plotted)
                 
                 col1, col2 = st.columns(2)
                 col1.image(img, caption="Downloaded Image" , use_column_width=True)
-                col2.image('images/test_image_output.jpg', caption="predected Image", use_column_width=True)
+                col2.image(res_plotted, caption="predected Image", use_column_width=True)
             except:
                 st.error("Error: Invalid image URL or unable to download the image.")
 
