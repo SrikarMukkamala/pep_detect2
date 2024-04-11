@@ -28,9 +28,9 @@ def main():
 
             # results = model(source=img,stream=True,classes=[0,2,3])
             # res_plotted = results[0].plot()
-            results = model.track(source=img, stream=True, persist=True, classes=[0,2,3])
+            results = model(source=img, stream=True, persist=True, classes=[0,2,3])
             for res in results:
-                annotated_frame = res.plot()
+                res_plotted = res.plot()
             cv2.imwrite('images/test_image_output.jpg', res_plotted)
             
             col1, col2 = st.columns(2)
@@ -51,8 +51,9 @@ def main():
             def transform(self, frame):
                 img = Image.fromarray(frame.to_ndarray())
 
-                results = model(source=img)
-                res_plotted = results[0].plot()
+                results = model(source=img, stream=True, persist=True, classes=[0,2,3])
+                for res in results:
+                    res_plotted = res.plot()
                 output_frame = cv2.cvtColor(res_plotted, cv2.COLOR_BGR2RGB)
 
                 return output_frame
@@ -72,8 +73,9 @@ def main():
                 response = requests.get(image_url)
                 img = Image.open(BytesIO(response.content))
 
-                results = model(source=img,stream=True,classes=[0,2,3])
-                res_plotted = results[0].plot()
+                results = model(source=img, stream=True, persist=True, classes=[0,2,3])
+                for res in results:
+                    res_plotted = res.plot()
                 cv2.imwrite('images/test_image_output.jpg', res_plotted)
                 
                 col1, col2 = st.columns(2)
