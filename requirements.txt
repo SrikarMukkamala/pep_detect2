@@ -3,7 +3,7 @@ streamlit_webrtc
 opencv-python-headless                             
 ffmpeg
 #libsm6
-libxext6
+#libxext6
 libgl1
 mediapipe
 ultralytics
