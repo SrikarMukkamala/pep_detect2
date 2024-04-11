@@ -2,7 +2,6 @@ streamlit
 streamlit_webrtc                                                           
 opencv-python-headless                             
 ffmpeg
-libgl1-mesa-glx
 mediapipe
 ultralytics
 pytube
