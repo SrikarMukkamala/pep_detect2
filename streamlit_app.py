@@ -26,8 +26,11 @@ def main():
         if uploaded_file is not None:
             img = Image.open(uploaded_file)
 
-            results = model(source=img,stream=True,classes=[0,2,3])
-            res_plotted = results[0].plot()
+            # results = model(source=img,stream=True,classes=[0,2,3])
+            # res_plotted = results[0].plot()
+            results = model.track(source=frame.to_image(), verbose=False, device=gpu, stream=True, persist=True, classes=[0,2,3])
+            for res in results:
+                annotated_frame = res.plot()
             cv2.imwrite('images/test_image_output.jpg', res_plotted)
             
             col1, col2 = st.columns(2)
