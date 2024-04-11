@@ -28,7 +28,7 @@ def main():
 
             # results = model(source=img,stream=True,classes=[0,2,3])
             # res_plotted = results[0].plot()
-            results = model(source=img, stream=True, persist=True, classes=[0,2,3])
+            results = model(source=img, stream=True)
             for res in results:
                 res_plotted = res.plot()
             cv2.imwrite('images/test_image_output.jpg', res_plotted)
